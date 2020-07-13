@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="/css/home.css">
+    <title>Hello, world!</title>
+    
+  </head>
+  <body>
+    <h1 class="heading">TODO APP</h1>
+    <form action="/create-task" method="POST">
+      <div class="description"> 
+        <fieldset>
+          <legend>DESCRIPTION</legend>
+        <textarea class="textarea" name="description" placeholder="What do you need to do?" required>
+        </textarea>
+        </fieldset>
+      </div>
+      <div class="date-category flex-r">
+        <div class="categ">
+          <h3>CATEGORY</h3>
+          <div class="box">
+            <select name="category" id="category">
+              <option value="category">Choose a category</option>
+              <option value="personal">personal</option>
+              <option value="work">Work</option>
+              <option value="school">School</option>
+              <option value="clean">Cleaning</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="box2">
+          <h3>Due date</h3>
+          <input type="date" name="date" placeholder="dd-mm-yyyy"required  min="01-01-1997" max="31-12-2034" id="date"> 
+        </div>
+      </div>
+      <div class="btn flex-r">
+        <button type="submit"><i class="fas fa-plus"></i>ADD TASK</button>
+      </div>
+    </form>
+<!-- add ho gya task bs ise print krwa lena  ???? hello-->  
+
+
+<!-- what about javascript code at bottom try kro ek bar bottom me work krna chahiye okay -->
+<!--  -->
+    <!-- <button type="submit">DELETE TASK</button> -->
+    <form action="" method="POST">
+     <table style="width: 100%;">
+       <tr> 
+        <th></th>
+        <th>DESCRIPTION</th>
+        <th>DATE</th>
+        <th>CATEGORY</th>
+       </tr>
+       <% for(let i of TaskList){ %>
+        <tr>
+            <td> <input type="checkbox" name="checkbox"></td>
+            <td> <p><%= i.description %></p></td>
+            <td><p><i class="fas fa-calendar-alt"></i><%= i.date %></p></td>
+            <td> 
+              <p class="prof"> <%= i.category %></p>
+            </td>
+           
+        </tr>
+
+        <% } %>
+        </table>
+    </form>
+
+   
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    
+    <script>
+      var rgb = [];
+      var prof = document.getElementsByClassName('prof');
+     for(let i of TaskList){
+        if(i.category=="Work"){
+          prof.style.backgroundColor = 'orange';
+        }
+        else if(i.category=="personal"){
+          prof.style.backgroundColor = 'green';
+        }
+        else if(i.category=="Cleaning"){
+          prof.style.backgroundColor = 'yellow';
+        }
+        else if(i.category=="Other"){
+          prof.style.backgroundColor = 'red';
+        }
+        else if(i.category=="School"){
+          prof.style.backgroundColor = 'blue';
+        }
+        else{
+          prof.style.backgroundColor ='white';
+        }
+        
+     }
+    </script>
+  
+  </body>
+</html>
