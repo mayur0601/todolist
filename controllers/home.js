@@ -1,5 +1,6 @@
 const express = require('express');
 const Todo = require('../models/todo');
+const Mongoose  = require('mongoose');
 
 var TaskList = [
     {
@@ -44,5 +45,16 @@ module.exports.home = function(req,res){
        return res.redirect('/');
     });
    
+ }
+
+ module.exports.deleteTask = async function(req,res){
+    console.log(req.body.checkbox);
+    idList = req.body.checkbox;
+   
+    for(i in idList){
+        await Todo.deleteOne({_id:Mongoose.Types.ObjectId(idList[i])});
+    }
+    return res.redirect('back')
+
  }
  
